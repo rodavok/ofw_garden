@@ -1,0 +1,31 @@
+
+Table users {
+  user_id int [pk, increment] // auto-increment
+  full_name varchar
+  home_address varchar
+  city varchar
+}
+
+Table beds {
+  bed_id int [pk, increment]
+  bed_user int [ref: > users.user_id]
+  last_repaired datetime
+  
+ }
+ 
+Table plants {
+  plant_id int [pk, increment]
+  type varchar
+  variety verchar
+  //other plant facts (diameter, time to growth, etc)
+}
+
+Table plants_beds {
+  bed_id int [ref:> beds.bed_id]
+  plant_id int [ref:> plants.plant_id]
+  status varchar
+  date_planted datetime
+  date_harvested datetime
+  yield int
+}
+
